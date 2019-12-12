@@ -66,7 +66,29 @@ class _ClientePageState extends State<ClientePage> {
             icon: Icon(Icons.add),
             iconSize: 30,
             color: Colors.white,
-            onPressed: () {},
+            onPressed: () async {
+              switch (await showDialog(
+                context: context,
+                builder: (BuildContext contextBuilder) {
+                  return SimpleDialog(
+                    elevation: 15,
+                    title: Text(
+                      "Novo Cliente",
+                      textAlign: TextAlign.center,
+                    ),
+                    children: <Widget>[
+                      SimpleDialogOption(
+                        child: Text("SimpleDialogOption"),
+                        onPressed: () {
+                          print("teste 1");
+                        },
+                      )
+                    ],
+                  );
+                },
+              )) {
+              }
+            },
           ),
         ],
       ),
