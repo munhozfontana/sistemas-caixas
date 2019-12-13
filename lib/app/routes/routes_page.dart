@@ -51,7 +51,7 @@ class _RoutesPageState extends State<RoutesPage> {
           return BottomNavigationBar(
             items: buttons,
             currentIndex: snapshot.data,
-            selectedItemColor: Colors.amber[800],
+            selectedItemColor: Colors.blue,
             onTap: (pageSelect) {
               bloc.mudarPagina(pageSelect);
             },
