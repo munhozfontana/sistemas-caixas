@@ -13,7 +13,7 @@ class _ProducaoPageState extends State<ProducaoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.blue,
       ),
       body: Column(
         children: <Widget>[],

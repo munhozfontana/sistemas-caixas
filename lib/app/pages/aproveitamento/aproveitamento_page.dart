@@ -13,6 +13,9 @@ class _AproveitamentoPageState extends State<AproveitamentoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         children: <Widget>[],
       ),

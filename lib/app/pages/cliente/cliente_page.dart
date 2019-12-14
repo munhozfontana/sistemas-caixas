@@ -1,3 +1,4 @@
+import 'package:controle_producao/app/components/CardClient.dart';
 import 'package:controle_producao/app/models/Caixa_model.dart';
 import 'package:controle_producao/app/pages/cliente/novo_editar/novo_editar_page.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,8 @@ class _ClientePageState extends State<ClientePage> {
     );
   }
 
+  void popUpButtons(args) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,100 +80,11 @@ class _ClientePageState extends State<ClientePage> {
       body: ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, i) {
-          return GestureDetector(
-            onTap: () {
-              print("teste $i");
-            },
-            child: Container(
-              margin: EdgeInsets.all(15),
-              padding: EdgeInsets.all(10),
-              height: 124,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: Colors.black87,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.blue,
-                    Colors.deepPurpleAccent,
-                  ],
-                  begin: Alignment.bottomCenter,
-                ),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.black45,
-                    offset: Offset(0, 6),
-                    blurRadius: 9,
-                    spreadRadius: 3,
-                  ),
-                ],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        child: Text(
-                          data.elementAt(i).cliente,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Text(
-                          "${data.elementAt(i).custo}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: textoCard("Altura ${data.elementAt(i).altura}"),
-                      ),
-                      Expanded(
-                        child: textoCard("Orelha ${data.elementAt(i).orelha}"),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: textoCard(
-                            "Gramatura ${data.elementAt(i).gramatura}"),
-                      ),
-                      Expanded(
-                        child: textoCard(
-                            "Comprimento ${data.elementAt(i).comprimento}"),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+          return CardClient(
+            data: data,
+            index: i,
           );
         },
-      ),
-    );
-  }
-
-  Container textoCard(String texto) {
-    return Container(
-      child: Text(
-        texto,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 13,
-        ),
       ),
     );
   }
