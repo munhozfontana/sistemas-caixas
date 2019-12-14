@@ -1,4 +1,5 @@
 import 'package:controle_producao/app/components/InputDefault.dart';
+import 'package:controle_producao/app/components/buttonDefault.dart';
 import 'package:controle_producao/app/components/titleDefault.dart';
 import 'package:controle_producao/app/models/Caixa_model.dart';
 import 'package:flutter/material.dart';
@@ -69,24 +70,13 @@ class _NovoEditarPageState extends State<NovoEditarPage> {
           InputDefault(
             label: "Cliente",
           ),
-          const SizedBox(height: 30),
-          RaisedButton(
-            onPressed: () {},
-            textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    Color(0xFF0D47A1),
-                    Color(0xFF1976D2),
-                    Color(0xFF42A5F5),
-                  ],
-                ),
-              ),
-              padding: const EdgeInsets.all(10.0),
-              child:
-                  const Text('Gradient Button', style: TextStyle(fontSize: 20)),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            child: DefaultButton(
+              text: "Salvar",
+              onPressed: () {
+                print("salvar");
+              },
             ),
           ),
         ],
