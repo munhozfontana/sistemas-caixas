@@ -7,8 +7,8 @@ class TitleDefault extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 15, left: 10),
+    return Container(
+      // padding: EdgeInsets.only(top: 15, left: 10),
       child: Text(
         title,
         textAlign: TextAlign.start,

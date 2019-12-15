@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class InputDefault extends StatelessWidget {
   final String label;
   final int flex;
+  // final int wi;
+  // final int flex;
 
   InputDefault({@required this.label, this.flex});
 
@@ -27,7 +29,6 @@ class InputDefault extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(10),
           child: TextFormField(
-            scrollPadding: EdgeInsets.all(5),
             style: TextStyle(
               fontSize: 15,
             ),

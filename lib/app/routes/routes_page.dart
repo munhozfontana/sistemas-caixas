@@ -1,4 +1,4 @@
-import 'package:controle_producao/app/pages/aproveitamento/aproveitamento_page.dart';
+import 'package:controle_producao/app/pages/compararcaixa/compararcaixa_page.dart';
 import 'package:controle_producao/app/pages/cliente/cliente_page.dart';
 import 'package:controle_producao/app/pages/producao/producao_page.dart';
 import 'package:controle_producao/app/routes/routes_bloc.dart';
@@ -14,7 +14,7 @@ class RoutesPage extends StatefulWidget {
 }
 
 class _RoutesPageState extends State<RoutesPage> {
-  final pages = <Widget>[ClientePage(), AproveitamentoPage(), ProducaoPage()];
+  final pages = <Widget>[ClientePage(), CompararCaixaPage(), ProducaoPage()];
 
   final buttons = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
