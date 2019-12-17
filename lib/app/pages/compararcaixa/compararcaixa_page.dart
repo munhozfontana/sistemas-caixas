@@ -1,4 +1,6 @@
+import 'package:controle_producao/app/components/cardCompararCaixa.dart';
 import 'package:controle_producao/app/components/suggestionsAproveitamento.dart';
+import 'package:controle_producao/app/models/Caixa_model.dart';
 import 'package:flutter/material.dart';
 
 class CompararCaixaPage extends StatefulWidget {
@@ -10,7 +12,42 @@ class CompararCaixaPage extends StatefulWidget {
   _CompararCaixaPageState createState() => _CompararCaixaPageState();
 }
 
+var caixas = <CaixaModel>[
+  CaixaModel(
+    cliente: "M.PAULISTA 1",
+    comprimento: 49.5,
+    largura: 44,
+    orelha: 50,
+    altura: 30,
+    gramatura: 357,
+    custo: 4.25,
+  ),
+  CaixaModel(
+    cliente: "M.PAULISTA 2",
+    comprimento: 460.0,
+    largura: 30,
+    orelha: 50,
+    altura: 120,
+    gramatura: 357,
+    custo: 4.25,
+  ),
+  CaixaModel(
+    cliente: "M.PAULISTA 3",
+    comprimento: 460.0,
+    largura: 500,
+    orelha: 50,
+    altura: 250,
+    gramatura: 357,
+    custo: 4.25,
+  ),
+];
+
 class _CompararCaixaPageState extends State<CompararCaixaPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,118 +56,18 @@ class _CompararCaixaPageState extends State<CompararCaixaPage> {
         Expanded(
           flex: 1,
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: caixas.length,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                margin: EdgeInsets.all(15),
-                padding: EdgeInsets.all(10),
-                height: 124,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.black87,
-                  gradient: LinearGradient(
-                    colors: [
-                      index == 0 ? Colors.blue : Colors.red,
-                      index == 0 ? Colors.green : Colors.purple,
-                    ],
-                    begin: Alignment.bottomCenter,
-                  ),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.black45,
-                      offset: Offset(0, 6),
-                      blurRadius: 9,
-                      spreadRadius: 3,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            "M.PAULISTA",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[
-                                  Text(
-                                    "Altura",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  Text(
-                                    "150.0 cm",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: <Widget>[
-                                  Text(
-                                    "Largura",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  Text(
-                                    "150.0 cm",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: <Widget>[
-                                  Text(
-                                    "Comprimento",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  Text(
-                                    "150.0 cm",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+              return CardCompararCaixa(
+                caixa: caixas[index],
+                procuraCaixa: CaixaModel(
+                  cliente: "teste",
+                  comprimento: 50,
+                  altura: 50,
+                  largura: 50,
+                  custo: 50,
+                  gramatura: 50,
+                  orelha: 30,
                 ),
               );
             },
