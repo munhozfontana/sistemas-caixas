@@ -54,8 +54,6 @@ class _ClientePageState extends State<ClientePage> {
     );
   }
 
-  void popUpButtons(args) {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
