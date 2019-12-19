@@ -33,7 +33,10 @@ class _CardClientState extends State<CardClient>
       vsync: this,
       duration: Duration(seconds: 1),
     );
-    animation = Tween<double>(begin: 0, end: 150).animate(animationController);
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Cubic(0.86, 0.0, 0.07, 0.5),
+    );
 
     animationController.forward();
     super.initState();
@@ -70,9 +73,9 @@ class _CardClientState extends State<CardClient>
                 ),
           );
         },
-        child: GrowTranstion(
+        child: AnimationCard(
           animation: animation,
-          chield: Container(
+          child: Container(
             margin: EdgeInsets.all(15),
             padding: EdgeInsets.all(10),
             height: animation.value,
@@ -95,59 +98,61 @@ class _CardClientState extends State<CardClient>
                 ),
               ],
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        widget.data.elementAt(widget.index).cliente,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          widget.data.elementAt(widget.index).cliente,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      child: Text(
-                        "${widget.data.elementAt(widget.index).custo}",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
+                      Container(
+                        child: Text(
+                          "${widget.data.elementAt(widget.index).custo}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Divider(),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: textoCard(
-                          "Altura ${widget.data.elementAt(widget.index).altura}"),
-                    ),
-                    Expanded(
-                      child: textoCard(
-                          "Orelha ${widget.data.elementAt(widget.index).orelha}"),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: textoCard(
-                          "Gramatura ${widget.data.elementAt(widget.index).gramatura}"),
-                    ),
-                    Expanded(
-                      child: textoCard(
-                          "Comprimento ${widget.data.elementAt(widget.index).comprimento}"),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: textoCard(
+                            "Altura ${widget.data.elementAt(widget.index).altura}"),
+                      ),
+                      Expanded(
+                        child: textoCard(
+                            "Orelha ${widget.data.elementAt(widget.index).orelha}"),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: textoCard(
+                            "Gramatura ${widget.data.elementAt(widget.index).gramatura}"),
+                      ),
+                      Expanded(
+                        child: textoCard(
+                            "Comprimento ${widget.data.elementAt(widget.index).comprimento}"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -168,11 +173,13 @@ class _CardClientState extends State<CardClient>
   }
 }
 
-class GrowTranstion extends StatelessWidget {
-  final Widget chield;
+class AnimationCard extends StatelessWidget {
+  final Widget child;
   final Animation<double> animation;
+  final sizeTween = Tween<double>(begin: 0, end: 150.0);
+  final opacityTween = Tween<double>(begin: 0.0, end: 1.0);
 
-  const GrowTranstion({Key key, this.chield, this.animation});
+  AnimationCard({Key key, this.child, this.animation});
 
   @override
   Widget build(BuildContext context) {
@@ -182,13 +189,16 @@ class GrowTranstion extends StatelessWidget {
         BuildContext context,
         Widget child,
       ) {
-        return Container(
-          child: child,
-          height: animation.value,
-          width: double.infinity,
+        return Opacity(
+          opacity: opacityTween.evaluate(animation),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 0),
+            height: sizeTween.evaluate(animation).clamp(0.0, 180.0),
+            child: child,
+          ),
         );
       },
-      child: chield,
+      child: child,
     );
   }
 }

@@ -75,7 +75,7 @@ class _NovoEditarPageState extends State<NovoEditarPage> {
             child: DefaultButton(
               text: "Salvar",
               onPressed: () {
-                print("salvar");
+                Navigator.pop(context);
               },
             ),
           ),

@@ -70,7 +70,6 @@ class _ProducaoPageState extends State<ProducaoPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _seriesLineData = List<charts.Series<Sales, int>>();
     _generateData();

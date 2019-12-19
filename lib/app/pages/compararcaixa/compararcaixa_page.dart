@@ -43,6 +43,7 @@ var caixas = <CaixaModel>[
 ];
 
 class _CompararCaixaPageState extends State<CompararCaixaPage> {
+  double errorLevel = 0;
   @override
   void initState() {
     super.initState();
@@ -53,6 +54,16 @@ class _CompararCaixaPageState extends State<CompararCaixaPage> {
     return Column(
       children: <Widget>[
         SuggestionsDefault(),
+        Slider(
+          onChanged: (double value) {
+            setState(() => errorLevel = value);
+          },
+          value: errorLevel,
+          min: 0,
+          max: 300,
+          divisions: 300,
+          label: "Error: ${errorLevel.toInt()} cm",
+        ),
         Expanded(
           flex: 1,
           child: ListView.builder(
