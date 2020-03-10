@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:controle_producao/app/components/cardClient.dart';
 import 'package:controle_producao/app/models/Caixa_model.dart';
 import 'package:flutter/material.dart';
