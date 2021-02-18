@@ -621,7 +621,7 @@ DA:18,2
 LF:8
 LH:6
 end_of_record
-SF:lib\app\pages\cliente\novo_editar\novo_editar_bloc.dart
+SF:lib\app\pages\cliente\cliente_bloc.dart
 DA:3,6
 DA:6,1
 DA:10,0
@@ -645,7 +645,7 @@ DA:20,4
 LF:9
 LH:7
 end_of_record
-SF:lib\app\pages\cliente\cliente_bloc.dart
+SF:lib\app\pages\cliente\novo_editar\novo_editar_bloc.dart
 DA:3,6
 DA:6,1
 DA:10,0
