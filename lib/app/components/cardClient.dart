@@ -30,7 +30,7 @@ class _CardClientState extends State<CardClient>
   @override
   void initState() {
     animationController = AnimationController(
-      vsync: this,
+      // vsync: this,
       duration: Duration(seconds: 1),
     );
     animation = CurvedAnimation(
@@ -83,10 +83,10 @@ class _CardClientState extends State<CardClient>
               shape: BoxShape.rectangle,
               color: Colors.black87,
               gradient: LinearGradient(
-                colors: [
-                  Colors.blue,
-                  Colors.deepPurpleAccent,
-                ],
+                // colors: [
+                //   Colors.blue,
+                //   Colors.deepPurpleAccent,
+                // ],
                 begin: Alignment.bottomCenter,
               ),
               boxShadow: <BoxShadow>[

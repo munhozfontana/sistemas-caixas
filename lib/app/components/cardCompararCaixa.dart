@@ -43,7 +43,6 @@ class _CardCompararCaixaState extends State<CardCompararCaixa>
   @override
   void initState() {
     animationController = AnimationController(
-      vsync: this,
       duration: Duration(seconds: 1),
     );
     animation = CurvedAnimation(
@@ -67,15 +66,15 @@ class _CardCompararCaixaState extends State<CardCompararCaixa>
           shape: BoxShape.rectangle,
           color: Colors.black87,
           gradient: LinearGradient(
-            colors: comparaCaixas(widget.caixa, widget.procuraCaixa)
-                ? [
-                    Colors.blue,
-                    Colors.green,
-                  ]
-                : [
-                    Colors.black54,
-                    Colors.black87,
-                  ],
+            // colors: comparaCaixas(widget.caixa, widget.procuraCaixa)
+            //     ? [
+            //         Colors.blue,
+            //         Colors.green,
+            //       ]
+            //     : [
+            //         Colors.black54,
+            //         Colors.black87,
+            //       ],
             begin: Alignment.bottomCenter,
           ),
           boxShadow: <BoxShadow>[
